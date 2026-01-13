@@ -8,13 +8,13 @@ export class UsersService {
             userId:1,
             username:'john',
             password: "changeme",
-            role: "soldier"
+            roles: ["soldier"]
         },
         {
             userId:2,
             username:'maria',
             password: "guess",
-            role: "commander"
+            roles: ["commander"]
         },
     ]
     sayHi(): string {
