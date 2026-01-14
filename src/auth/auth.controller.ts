@@ -5,6 +5,7 @@ import { Roles } from '../roles/roles.decoretor';
 import { Role } from '../roles/role.enum';
 import { type Response } from 'express';
 import { RolesGuard } from 'src/roles/roles.guard';
+import { UserDto } from 'src/users/users.dto';
 
 @Controller('auth')
 export class AuthController {
@@ -17,9 +18,9 @@ export class AuthController {
     @Post('login')
     // @Roles(Role.Admin)
 
-    async singin(@Body() signInDto: Record<string, any>, @Res() res: Response) {
+    async singin(@Body() userDto: UserDto, @Res() res: Response) {
 
-        const { access_token } = await this.authService.singIn(signInDto.username, signInDto.password)
+        const { access_token } = await this.authService.singIn(userDto.username, userDto.password)
         res.header({ "access_token": access_token })
         res.json("login success")
     }
